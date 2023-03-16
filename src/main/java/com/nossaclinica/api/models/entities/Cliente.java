@@ -21,12 +21,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
+@Entity
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Entity
 @Table(name = "clientes")
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Cliente implements Serializable {
 			
 	
@@ -40,11 +40,11 @@ public class Cliente implements Serializable {
 	private Long idCliente;
 
 	@OneToOne
-	@JoinColumn(name = "contato_id")
+	@JoinColumn(name = "contato_id", nullable = true)
 	private Contato contato;
 
 	@OneToOne
-	@JoinColumn(name = "endereco_id")
+	@JoinColumn(name = "endereco_id", nullable = true)
 	private Endereco endereco;
 	
 	@Column(name = "nome")
@@ -63,7 +63,7 @@ public class Cliente implements Serializable {
 	private LocalDate dataDeNascimento;
 	
 	@OneToOne
-	@JoinColumn(name = "usuario_id")
+	@JoinColumn(name = "usuario_id", nullable = true)
 	private Usuario usuario;
 	
 	public LocalDate getDataDeNascimento() {

@@ -1,0 +1,17 @@
+CREATE SEQUENCE IF NOT EXISTS foto_id_seq
+	INCREMENT 1
+	MINVALUE 1
+	MAXVALUE 9999999999999
+	START 1
+	CACHE 1;
+
+CREATE TABLE fotos (
+	id_foto	 			BIGINT DEFAULT NEXTVAL('foto_id_seq'),
+	urlImg				VARCHAR(600) NOT NULL,
+	titulo				VARCHAR(50) NULL,
+	descricao			VARCHAR(600) NULL,
+	
+	PRIMARY KEY (id_foto)
+);
+
+

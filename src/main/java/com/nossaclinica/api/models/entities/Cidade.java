@@ -30,14 +30,14 @@ public class Cidade implements Serializable{
 	@Column(name = "id_cidade")
 	@EqualsAndHashCode.Include
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cidade_id_seq")
-	@SequenceGenerator(name = "cidade_id_seq",sequenceName = "cidade_id_seq", initialValue = 1, allocationSize = 1)
+	@SequenceGenerator(name = "cidade_id_seq", sequenceName = "cidade_id_seq", 
+	initialValue = 1, allocationSize = 1)
 	private Long idCidade;
 	
 	@Column(name = "nome")
 	private String nome;
 	
 	@Column(name = "uf")
-	private String uf;
-	
+	private String uf;	
 
 }

@@ -23,12 +23,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-@Getter @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "contatos")
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Contato implements Serializable{
 	
 	private static final long serialVersionUID = 1L;

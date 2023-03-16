@@ -1,16 +1,13 @@
 package com.nossaclinica.api.models.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -19,14 +16,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-/*
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-@Table(name = "fotos")*/
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "fotos")
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)  
 public class Foto implements Serializable{
 	
 	/**
@@ -34,23 +29,20 @@ public class Foto implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
-/*	@Id
+	@Id
 	@EqualsAndHashCode.Include
 	@Column(name = "id_foto")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_foto_seq")*/
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "foto_id_seq")
+	@SequenceGenerator(name = "foto_id_seq", sequenceName = "foto_id_seq", allocationSize = 1, initialValue = 1)
 	private Long id;
 	
-//	@Column(name = "diretorio")
-	private String path;
+	@Column(name = "urlImg")
+	private String urlImg;
 	
-//	@Column(name = "titulo")
+	@Column(name = "titulo")
 	private String titulo;
 	
-//	@Column(name = "descricao")
+	@Column(name = "descricao")
 	private String descricao;
-	
-/*	@OneToMany
-	@JoinColumn(name = "foto_id")*/
-	private List<Foto> galeria = new ArrayList<Foto>();
 	
 }

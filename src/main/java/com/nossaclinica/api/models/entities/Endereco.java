@@ -23,12 +23,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
+@Entity
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Entity
 @Table(name = "enderecos")
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Endereco implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -59,6 +59,5 @@ public class Endereco implements Serializable{
 	@OneToOne
 	@JoinColumn(name = "cidade_id")
 	private Cidade cidade;
-
 
 }

@@ -1,6 +1,5 @@
 package com.nossaclinica.api.controllers;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nossaclinica.api.models.filters.ClienteFilter;
 import com.nossaclinica.api.models.tdos.ClienteDTO;
 import com.nossaclinica.api.services.ClienteService;
 
@@ -28,8 +28,8 @@ public class ClienteController {
 	@PostMapping(path = "/novo",
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<ClienteDTO> criar(@RequestBody ClienteDTO cliente) {
-		return service.criar(cliente);
+	public ResponseEntity<ClienteDTO> salvar(@RequestBody ClienteDTO cliente) {
+		return service.salvar(cliente);
 	}
 	
 	@PutMapping()
@@ -42,10 +42,8 @@ public class ClienteController {
 	 */
 	@GetMapping(path = "/do", 
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<ClienteDTO> buscarPor(@PathVariable Long id, 
-			@PathVariable String cpf, @PathVariable String rg, @PathVariable String nome,
-			@PathVariable LocalDate dataDeNascimento, @PathVariable String cartaoSUS) {
-				return service.buscarPor(id, cpf, rg, nome, dataDeNascimento, cartaoSUS);
+	public ResponseEntity<ClienteDTO> buscarPorFiltro(@RequestBody ClienteFilter filter) {
+				return service.buscarPorFiltro(filter);
 		
 	}
 	

@@ -1,0 +1,15 @@
+CREATE SEQUENCE IF NOT EXISTS perfil_id_seq
+	INCREMENT 1
+	MINVALUE 1
+	MAXVALUE 9999999999999
+	START 1
+	CACHE 1;
+
+CREATE TABLE perfis (
+	id_perfil	 			BIGINT DEFAULT NEXTVAL('perfil_id_seq'),
+	urlImg					VARCHAR(600),
+	
+	PRIMARY KEY (id_perfil)
+);
+
+

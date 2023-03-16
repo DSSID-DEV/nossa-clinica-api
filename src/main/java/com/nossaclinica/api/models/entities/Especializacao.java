@@ -20,19 +20,20 @@ import lombok.Setter;
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "perfis")
+@Table(name = "especializacoes")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Perfil implements Serializable{
-	
+public class Especializacao implements Serializable{
+
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@EqualsAndHashCode.Include
-	@Column(name = "id_perfil")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "perfil_id_seq")
-	@SequenceGenerator(name = "perfil_id_seq",sequenceName = "perfil_id_seq", initialValue = 1, allocationSize = 1)
-	private Long idPerfil;
-	
-	@Column(name = "urlImg")
-	private String urlImg;
+	@Column(name = "id_especializacao")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "especializacao_id_seq")
+	@SequenceGenerator(name = "especializacao_id_seq",sequenceName = "especializacao_id_seq", initialValue = 1, allocationSize = 1)
+	private Long idEspecializacao;
+
+	@Column(name = "descricao", nullable = false)
+	private String descricao;
+
 }
