@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.nossaclinica.api.models.dtos.EspecializacaoDTO;
 import com.nossaclinica.api.models.entities.Especializacao;
-import com.nossaclinica.api.models.tdos.EspecializacaoDTO;
 import com.nossaclinica.api.repositories.EspecializacaoRepository;
 
 @Service

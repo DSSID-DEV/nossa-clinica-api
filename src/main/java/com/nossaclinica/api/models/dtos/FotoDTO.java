@@ -1,4 +1,4 @@
-package com.nossaclinica.api.models.tdos;
+package com.nossaclinica.api.models.dtos;
 
 import java.util.List;
 

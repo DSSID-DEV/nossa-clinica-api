@@ -1,4 +1,4 @@
-package com.nossaclinica.api.models.summaries.tdos;
+package com.nossaclinica.api.models.summaries.dtos;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

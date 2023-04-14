@@ -1,7 +1,5 @@
 package com.nossaclinica.api.models.entities;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,16 +14,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "cidades")
-public class Cidade implements Serializable{
-	
-	private static final long serialVersionUID = 1L;
-	
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+public class Cidade {
+
 	@Id
 	@Column(name = "id_cidade")
 	@EqualsAndHashCode.Include

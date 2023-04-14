@@ -1,7 +1,5 @@
 package com.nossaclinica.api.models.entities;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -29,9 +27,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Table(name = "contatos")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Contato implements Serializable{
-	
-	private static final long serialVersionUID = 1L;
+public class Contato {
 	
 	@Id
 	@EqualsAndHashCode.Include

@@ -1,7 +1,5 @@
 package com.nossaclinica.api.models.entities;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,12 +20,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Table(name = "fotos")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)  
-public class Foto implements Serializable{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Foto {
 
 	@Id
 	@EqualsAndHashCode.Include

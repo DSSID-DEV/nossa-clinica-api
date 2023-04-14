@@ -1,6 +1,5 @@
 package com.nossaclinica.api.models.entities;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -29,9 +28,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class MedicoEspecialista implements Serializable{
-
-	private static final long serialVersionUID = 1L;
+public class MedicoEspecialista {
 	
 	@Id
 	@EqualsAndHashCode.Include

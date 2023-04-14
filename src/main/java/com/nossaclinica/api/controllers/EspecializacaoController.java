@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nossaclinica.api.models.tdos.EspecializacaoDTO;
+import com.nossaclinica.api.models.dtos.EspecializacaoDTO;
 import com.nossaclinica.api.services.EspecializacaoService;
 
 @RestController

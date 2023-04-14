@@ -1,37 +1,47 @@
-package com.nossaclinica.api.models.tdos;
+package com.nossaclinica.api.models.dtos;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.nossaclinica.api.enums.NaoSim;
-import com.nossaclinica.api.enums.Permissao;
+import com.nossaclinica.api.validations.anotations.FullName;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Builder
+
+
 @Getter @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UsuarioDTO implements Serializable{
+public class ClienteDTO implements Serializable{
+	
 	private static final long serialVersionUID = 1L;
+
+
+	private Long idCliente;
 	
-	private Long id;
 	private ContatoDTO contato;
-	private String userName;
-	private String senha;
-	private String nome;
-	private String cpf;
-	private String rg;
-	private String orgaoEmissor;
-	private LocalDate dataDeNascimento;
-	private PerfilDTO perfil;
-	private Permissao permissao;
-	private NaoSim ativo;	
+
+	private EnderecoDTO endereco;
 	
+	@FullName
+	private String nome;
+	
+	@CPF(message = "Favor informe o número do CPF válido!")
+	private String cpf;
+	
+	private String rg;
+	
+	private String orgaoEmissor;
+	
+	private LocalDate dataDeNascimento;
+	
+	private UsuarioDTO usuario;
+
 }

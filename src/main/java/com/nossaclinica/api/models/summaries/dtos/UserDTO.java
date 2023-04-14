@@ -1,9 +1,9 @@
-package com.nossaclinica.api.models.summaries.tdos;
+package com.nossaclinica.api.models.summaries.dtos;
 
 import java.io.Serializable;
 
 import com.nossaclinica.api.enums.Permissao;
-import com.nossaclinica.api.models.tdos.PerfilDTO;
+import com.nossaclinica.api.models.dtos.PerfilDTO;
 
 import lombok.Data;
 

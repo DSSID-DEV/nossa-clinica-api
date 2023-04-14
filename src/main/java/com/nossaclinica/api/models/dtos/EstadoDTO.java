@@ -1,6 +1,7 @@
-package com.nossaclinica.api.models.tdos;
+package com.nossaclinica.api.models.dtos;
 
 import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,14 +11,14 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class EspecialidadeDTO implements Serializable {
+public class EstadoDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Long idEspecialidade;
+	private Long idEstado;
 
-	private String descricao;
+	private String nome;
 
-	private String crm;
+	private String uf;
 
 }

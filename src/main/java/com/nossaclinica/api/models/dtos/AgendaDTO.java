@@ -1,8 +1,9 @@
-package com.nossaclinica.api.models.entities;
+package com.nossaclinica.api.models.dtos;
 
+import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.nossaclinica.api.enums.StatusDoAgendamento;
 
 import lombok.AllArgsConstructor;
@@ -11,13 +12,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-//@Entity
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-//@Table(name = "agenda")
+@JsonIgnoreProperties(ignoreUnknown = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Agenda {
+public class AgendaDTO implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	private Long idAgenda;
 	
@@ -25,39 +27,15 @@ public class Agenda {
 	
 	private LocalDate dataDoRetorno;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "cliente_id")
-	private Cliente cliente;
+	private ClienteDTO cliente;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "medico_id")
-	private MedicoEspecialista medico;
+	private MedicoEspecialistaDTO medico;
 	
-//	@Column(name = "status_da_ida")
-//	@Enumerated(EnumType.ORDINAL)
 	private StatusDoAgendamento statusDaIda;
 	
-//	@Enumerated(EnumType.ORDINAL)
-//	@Column(name = "status_da_volta")
 	private StatusDoAgendamento statusDaVolta;
 	
-	
 	private Boolean concluiuProcesso;
-	
-	public LocalDate getDataDoRetorno() {
-		if (this.dataDoRetorno != null) {
-			this.dataDoRetorno.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-		}
-		return dataDoRetorno;	
-	}
-	
-	public LocalDate getDataDaConsulta() {
-		if (this.dataDaConsulta != null) {
-			this.dataDaConsulta.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-		}
-		return dataDaConsulta;	
-	}
-	
 	
 	public Boolean isConcluiuProcesso() {
 		this.concluiuProcesso = statusDaIda.getDescricao()
@@ -70,7 +48,4 @@ public class Agenda {
 		return this.concluiuProcesso;
 		
 	}
-	
-	
-
 }

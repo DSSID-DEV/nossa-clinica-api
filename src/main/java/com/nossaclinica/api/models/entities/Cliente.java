@@ -1,9 +1,9 @@
 package com.nossaclinica.api.models.entities;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.br.CPF;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -27,11 +29,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @Table(name = "clientes")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Cliente implements Serializable {
+public class Cliente {
 			
-	
-	private static final long serialVersionUID = 1L;
-	
 	@Id
 	@EqualsAndHashCode.Include
 	@Column(name = "id_cliente")
@@ -39,17 +38,17 @@ public class Cliente implements Serializable {
 	@SequenceGenerator(name = "cliente_id_seq",sequenceName = "cliente_id_seq", initialValue = 1, allocationSize = 1)
 	private Long idCliente;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "contato_id", nullable = true)
 	private Contato contato;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "endereco_id", nullable = true)
 	private Endereco endereco;
 	
 	@Column(name = "nome")
 	private String nome;
-	
+	@CPF(message = "Favor informe o número do CPF válido!")
 	@Column(name = "cpf", unique = true, length = 15)
 	private String cpf;
 	
@@ -62,7 +61,7 @@ public class Cliente implements Serializable {
 	@Column(name = "nascido_em")
 	private LocalDate dataDeNascimento;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "usuario_id", nullable = true)
 	private Usuario usuario;
 	

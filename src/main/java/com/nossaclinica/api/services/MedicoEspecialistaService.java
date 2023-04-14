@@ -9,8 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.nossaclinica.api.models.dtos.MedicoEspecialistaDTO;
 import com.nossaclinica.api.models.entities.MedicoEspecialista;
-import com.nossaclinica.api.models.tdos.MedicoEspecialistaDTO;
 import com.nossaclinica.api.repositories.MedicoEspecialistaRepository;
 
 @Service

@@ -1,6 +1,5 @@
 package com.nossaclinica.api.models.entities;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -26,9 +25,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Especialidade implements Serializable{
-
-	private static final long serialVersionUID = 1L;
+public class Especialidade {
 	
 	@Id
 	@Column(name = "id_especialidade")

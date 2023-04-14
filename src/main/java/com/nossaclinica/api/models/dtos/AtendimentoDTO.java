@@ -1,10 +1,12 @@
-package com.nossaclinica.api.models.entities;
+package com.nossaclinica.api.models.dtos;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import com.nossaclinica.api.enums.ConsultaOuRetorno;
 import com.nossaclinica.api.enums.NaoSim;
+import com.nossaclinica.api.validations.anotations.TemVolta;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -17,9 +19,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Atendimento {
+public class AtendimentoDTO implements Serializable{
 
 	
+	private static final long serialVersionUID = 1L;
+
 	@EqualsAndHashCode.Include
 	private Long idAtendimento;
 	
@@ -27,22 +31,24 @@ public class Atendimento {
 	
 	private LocalDate retornouEm;
 	
-	private Prontuario prontuario;
+	private ProntuarioDTO prontuario;
 	
 	private String procedimento;
 	
 	private ConsultaOuRetorno consultaOuRetorno;
 	
-	private Cliente cliente;
+	private ClienteDTO cliente;
 	
-	private MedicoEspecialista medico;
+	private MedicoEspecialistaDTO medico;
 	
 	private NaoSim temVolta;
 	
+	private int prazoPraVolta;
 	
+	@TemVolta(message = "Não tem direito a volta")
 	public NaoSim getTemVolta() {
 		if (this.temVolta != null) {
-			this.temVolta = LocalDate.now().compareTo(atendidoEm) > 15 ? NaoSim.N : NaoSim.S;
+			this.temVolta = LocalDate.now().compareTo(atendidoEm) > this.prazoPraVolta ? NaoSim.N : NaoSim.S;
 		}
 		return this.temVolta;
 	}

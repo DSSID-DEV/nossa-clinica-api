@@ -1,8 +1,6 @@
-package com.nossaclinica.api.models.filters;
+package com.nossaclinica.api.models.summaries.dtos;
 
 import java.time.LocalDate;
-
-import org.hibernate.validator.constraints.br.CPF;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -15,13 +13,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ClienteFilter {
+public class UserNameNascidoEm {
 	
-	private String nome;
-	@CPF(message = "Este CPF é inválido, favor informe o CPF correto!")
-	private String cpf;
-	private String rg;
-	private String cartaoSus;
+	private String username;
+	
 	private LocalDate nascidoEm;
-
+	
 }

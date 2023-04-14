@@ -1,6 +1,5 @@
 package com.nossaclinica.api.models.entities;
 
-import java.io.Serializable;
 import java.util.Random;
 
 import javax.persistence.Column;
@@ -33,10 +32,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Table(name = "usuarios")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Usuario implements Serializable{
-	
-	
-	private static final long serialVersionUID = 1L;
+public class Usuario {
 
 	@Id
 	@EqualsAndHashCode.Include
@@ -48,16 +44,13 @@ public class Usuario implements Serializable{
 	@Column(name = "user_name")
 	private String userName;
 	
-	@Column(name = "celular")
-	private String celular;
-	
-	@Column(name = "email")
-	private String email;
+	@OneToOne
+	@JoinColumn(name = "contato_id")
+	private Contato contato;
 	
 	@Column(name = "senha")
 	private String senha;
-	
-	
+		
 	@Column(name = "ativo")
 	@JsonSerialize(using = NaoSimSerialize.class)
 	@Enumerated(EnumType.ORDINAL)
