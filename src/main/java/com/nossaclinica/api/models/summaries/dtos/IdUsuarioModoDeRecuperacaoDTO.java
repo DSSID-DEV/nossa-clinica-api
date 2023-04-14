@@ -1,8 +1,9 @@
 package com.nossaclinica.api.models.summaries.dtos;
 
-import java.time.LocalDate;
+import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.nossaclinica.api.enums.ModoDeRecuperacao;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,10 +14,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserNameNascidoEm {
+public class IdUsuarioModoDeRecuperacaoDTO implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
+	private Long idUsuario;
+	private ModoDeRecuperacao recuperarPor;
 	
-	private String username;
-	
-	private LocalDate nascidoEm;
+	private String recuperarComEsseDado;
 	
 }

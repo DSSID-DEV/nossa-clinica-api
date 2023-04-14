@@ -1,6 +1,6 @@
 package com.nossaclinica.api.models.summaries.dtos;
 
-import java.time.LocalDate;
+import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -13,19 +13,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class IdUsuarioEmailWhatsApp {
+public class UserNameRecuperarSenha implements Serializable{
 	
-	private Long idUsuario;
-	
-	private String senhaProvisoria;
-	
-	private String email;
-	
-	private String whatsApp;
-	
-	private boolean viaEmail;
-	
-	private boolean viaWhatsApp;
+	private static final long serialVersionUID = 1L;
 
-
+	private String username;
+	
+	private Boolean recuperarSenha;
+	
+		
 }
