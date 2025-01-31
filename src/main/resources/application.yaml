@@ -1,0 +1,42 @@
+nossaclinica-api:
+  config:
+    whatsapp-api:
+      url: 'http://localhost:3000'
+      send-message: '/client/sendMessage/'
+      key: dssiditexperts
+      destino: 558173205636
+    documentos: 'src/main/resources/documentos'
+    auth:
+      security:
+        secretKey: S4zXL3gloxcaKyTfdG?-fwJ?eFyL/JRHbFIgajP8ol4vweRSRwGwRvvKZTAGqPxlcZ0htrX73w9nCA4cMizOF0/Q0HMlJj5At1=/UcWJzmWA4BNevH0tbtMJqs1H9Zar
+        jwtExpirationMs: 14400000
+    cors:
+      origins: 'http://localhost:5173'
+  images:
+    path-root: 'https://raw.githubusercontent.com/nossaclinica/nossaclinica_imagens/main'
+    users:
+      avatas: /users/avatas/
+    profissionais:
+      galerias: /profissionais/galerias/
+    anuncios:
+      galerias: /colaboradores/avatas/
+    logomarca: /logomarca/
+
+
+
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    enabled: true
+    path: /api-docs
+
+spring:
+  application:
+    name: nossaclinica-api
+  datasource:
+    url: jdbc:postgresql://localhost:5432/nossaclinica-api
+    username: postgres
+    password: d3m37r10
+
