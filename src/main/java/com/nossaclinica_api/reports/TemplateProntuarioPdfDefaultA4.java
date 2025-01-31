@@ -69,42 +69,4 @@ public class TemplateProntuarioPdfDefaultA4 {
         return baos;
     }
 
-//    private PdfPTable montarAssinatura(DadosParaProntuario inserir) {
-//        float espacamento = 555f;
-//        var crm = String.format("%s/%s %s",  inserir.getOrgaoRegulador(),
-//                        inserir.getUf(),
-//                        inserir.getNumeroDoRegistro());
-//        var rqe = String.format("RQE: %s", inserir.getRqes().replace(" ", " - "));
-//
-//        var assinatura = new PdfPTable(1);
-//
-//        assinatura.setWidthPercentage(45f);
-//        assinatura.setHorizontalAlignment(Element.ALIGN_CENTER);
-//        var cell = new PdfPCell();
-//        cell.setBorder(Rectangle.NO_BORDER);
-//        cell.setBorder(Rectangle.TOP);
-//        cell.setBorderColorTop(Color.BLACK);
-//        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-//        cell.setPhrase(new Phrase(inserir.getMedico(), new Font(Font.TIMES_ROMAN, 10)));
-//        assinatura.addCell(cell);
-//        cell = new PdfPCell();
-//        cell.setBorder(Rectangle.NO_BORDER);
-//        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-//        cell.setPhrase(new Phrase(crm, new Font(Font.TIMES_ROMAN, 8)));
-//        assinatura.addCell(cell);
-//        if(StringUtils.isNotBlank(inserir.getRqes().trim())) {
-//            cell = new PdfPCell();
-//            cell.setBorder(Rectangle.NO_BORDER);
-//            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-//            cell.setPhrase(new Phrase(rqe, new Font(Font.TIMES_ROMAN, 8)));
-//            assinatura.addCell(cell);
-//            espacamento = 543f;
-//        }
-//        assinatura.setSpacingBefore(espacamento);
-//        log.info(Documento.ASSINATURA_ADICIONADO_COM_SUCESSO);
-//        float height = assinatura.getTotalHeight();
-//        System.out.println(height);
-//        return assinatura;
-//    }
-
 }

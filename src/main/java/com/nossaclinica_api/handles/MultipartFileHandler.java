@@ -9,7 +9,6 @@ import java.io.IOException;
 public class MultipartFileHandler {
 
     public MultipartFile payloadHandle(MultipartFile fileName) throws IOException {
-        System.out.println("handler: " + fileName.getOriginalFilename());
         return fileName;
     }
 }
