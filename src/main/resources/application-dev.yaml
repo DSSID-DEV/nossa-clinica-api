@@ -5,6 +5,7 @@ nossaclinica-api:
       send-message: '/client/sendMessage/'
       key: dssiditexperts
       destino: 558173205636
+    documentos: 'src/main/resources/documentos'
     auth:
       security:
         secretKey: S4zXL3gloxcaKyTfdG?-fwJ?eFyL/JRHbFIgajP8ol4vweRSRwGwRvvKZTAGqPxlcZ0htrX73w9nCA4cMizOF0/Q0HMlJj5At1=/UcWJzmWA4BNevH0tbtMJqs1H9Zar
@@ -21,6 +22,9 @@ nossaclinica-api:
       galerias: /colaboradores/avatas/
     logomarca: /logomarca/
 
+
+
+
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
@@ -30,12 +34,9 @@ springdoc:
 
 spring:
   application:
-    name: nossa-clinica-api
+    name: nossaclinica-api
   datasource:
-    url: jdbc:postgres://ec2-13-216-14-233.compute-1.amazonaws.com:5432/daia0o9oghqub4
-    username: usdq3pi50msmt
-    password: pdc44e3642c6a109033c7b93a8644352f8cbcc051b04ce9e70807c0b5d1a3dd06
-  flyway:
-    enabled: true
-    baseline-on-migrate: true
-    locations: 'classpath:db/migration'
+    url: jdbc:postgresql://localhost:5432/nossaclinica-api
+    username: postgres
+    password: d3m37r10
+
