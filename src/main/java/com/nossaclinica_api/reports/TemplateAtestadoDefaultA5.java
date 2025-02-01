@@ -1,20 +1,21 @@
 package com.nossaclinica_api.reports;
 
+import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
+import com.lowagie.text.PageSize;
 import com.lowagie.text.pdf.PdfWriter;
 import com.nossaclinica_api.models.dtos.DadosParaProntuario;
-import com.nossaclinica_api.reports.helper.HeaderFooterHelper;
-import com.nossaclinica_api.reports.conteudos.impl.Atestado;
-import com.nossaclinica_api.reports.utils.Documento;
 import com.nossaclinica_api.reports.conteudos.IConteudo;
+import com.nossaclinica_api.reports.conteudos.impl.Atestado;
+import com.nossaclinica_api.reports.helper.HeaderFooterHelper;
+import com.nossaclinica_api.reports.utils.Documento;
 import com.nossaclinica_api.reports.utils.TituloPDF;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Optional;
 
@@ -36,18 +37,13 @@ public class TemplateAtestadoDefaultA5 {
     @Value("${nossaclinica-api.config.documentos}")
     private String diretorio;
 
-    public File gerarPdf_A5(DadosParaProntuario inserir, String tipoDocumento, Optional<Object> observacao)throws IOException {
-        var path = new File(diretorio);
-        if (!path.exists()) {
-            path.mkdir();
-        }
+    public ByteArrayOutputStream gerarPdf_A5(DadosParaProntuario inserir, String tipoDocumento, Optional<Object> observacao)throws IOException {
 
         headerFooterHelper.setInserir(inserir);
         headerFooterHelper.setTipoDeDocumento(tipoDocumento);
-
-        var filePDF = new File(path + "/".concat(tipoDocumento).concat(Documento.EXTENSAO));
-        var documento = Documento.PAPEL_A5;
-        var write =  PdfWriter.getInstance(documento, new FileOutputStream(filePDF));
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        var documento = new Document(PageSize.A5, 28f, 28f, 60f, 30f);
+        var write =  PdfWriter.getInstance(documento, baos);
 
         try {
             write.setPageEvent(headerFooterHelper);
@@ -68,7 +64,7 @@ public class TemplateAtestadoDefaultA5 {
         } finally {
             documento.close();
         }
-        return filePDF;
+        return baos;
     }
 
 }

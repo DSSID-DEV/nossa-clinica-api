@@ -127,8 +127,8 @@ public class DocumentoService {
     public byte[] gerarAtestadoPdf_A5(Long idAgendamento, Optional<Object> documento) {
         var dadosParaProntuario = agendamentos.gerarDocumentoClinico(idAgendamento);
         try {
-            var filePDF = atestadoDefaultA5.gerarPdf_A5(dadosParaProntuario, Documento.ATESTADO, documento);
-            return Files.readAllBytes(filePDF.toPath());
+            var baos = atestadoDefaultA5.gerarPdf_A5(dadosParaProntuario, Documento.ATESTADO, documento);
+            return baos.toByteArray();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
