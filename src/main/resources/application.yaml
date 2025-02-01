@@ -10,7 +10,7 @@ nossaclinica-api:
         secretKey: S4zXL3gloxcaKyTfdG?-fwJ?eFyL/JRHbFIgajP8ol4vweRSRwGwRvvKZTAGqPxlcZ0htrX73w9nCA4cMizOF0/Q0HMlJj5At1=/UcWJzmWA4BNevH0tbtMJqs1H9Zar
         jwtExpirationMs: 14400000
     cors:
-      origins: 'http://localhost:5173'
+      origins: 'https://prod-nossaclinica.netlify.app'
   images:
     path-root: 'https://raw.githubusercontent.com/nossaclinica/nossaclinica_imagens/main'
     users:

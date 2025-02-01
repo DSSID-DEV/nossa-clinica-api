@@ -10,7 +10,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -24,9 +23,6 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -57,9 +53,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .requestMatchers(requestMatches()).permitAll()
                         .anyRequest().authenticated()
                 )
-//                .antMatchers(ConstantsValues.AUTH_WHITELIST).permitAll()
-//                .anyRequest().authenticated()
-//                .and()
                 .csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.configurationSource(corsConfigureSource()));
                 http.addFilterBefore(authenticationJWTFilter(),
@@ -71,7 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             @Override
             public boolean matches(HttpServletRequest httpServletRequest) {
                 String origin = httpServletRequest.getHeader(HttpHeaders.ORIGIN);
-                if(StringUtils.isBlank(origin) && !ConstantsValues.AUTH_WHITELIST.contains("http://localhost:5173")) {
+                if(StringUtils.isBlank(origin) && !ConstantsValues.AUTH_WHITELIST.contains(origins)) {
                     return false;
                 }
                 return true;
@@ -82,7 +75,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public CorsConfigurationSource corsConfigureSource() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowedOrigins(List.of("http://localhost:5173")); // Permitir React
+        corsConfiguration.setAllowedOrigins(List.of("https://prod-nossaclinica.netlify.app")); // Permitir React
         corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS")); // Métodos permitidos
         corsConfiguration.setAllowedHeaders(List.of("*")); // Permitir todos os headers
         corsConfiguration.setAllowCredentials(true); // Permitir envio de cookies/autenticação
@@ -91,26 +84,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         source.registerCorsConfiguration("/**", corsConfiguration); // Aplica a configuração para todos os endpoints
         return source;
     }
-
-//    @Bean
-//    public WebMvcConfigurer corsConfigurer() {
-//        return new WebMvcConfigurer() {
-//            @Override
-//            public void addInterceptors(InterceptorRegistry registry) {
-//               registry.addInterceptor(new CustomCorsInterceptor(origins));
-//            }
-//
-//            @Override
-//            public void addCorsMappings(CorsRegistry registry) {
-//                registry.addMapping("/**") // Permite CORS para todos os endpoints
-//                        .allowedOrigins(origins) // Substitua pelas origens permitidas
-//                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-//                        .allowedHeaders("*")
-//                        .allowCredentials(true); // Permitir cookies ou autenticação, se necessário
-//            }
-//        };
-//    }
-
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
