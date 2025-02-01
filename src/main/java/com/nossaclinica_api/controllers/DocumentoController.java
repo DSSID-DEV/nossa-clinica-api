@@ -5,7 +5,6 @@ import com.nossaclinica_api.services.DocumentoService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -22,9 +21,6 @@ import java.util.Optional;
 public class DocumentoController {
 
     private final DocumentoService service;
-
-    @Value("${nossaclinica-api.config.documentos}")
-    private String diretorio;
 
     @GetMapping(value = "/gerar/prontuario/{idAgendamento}", produces = MediaType.APPLICATION_PDF_VALUE)
     public ResponseEntity<?> gerarProntuarioPdf_A4(@PathVariable("idAgendamento") Long idAgendamento) {
