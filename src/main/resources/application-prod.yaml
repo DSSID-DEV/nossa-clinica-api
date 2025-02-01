@@ -5,7 +5,6 @@ nossaclinica-api:
       send-message: '/client/sendMessage/'
       key: dssiditexperts
       destino: 558173205636
-    documentos: 'src/main/resources/documentos'
     auth:
       security:
         secretKey: S4zXL3gloxcaKyTfdG?-fwJ?eFyL/JRHbFIgajP8ol4vweRSRwGwRvvKZTAGqPxlcZ0htrX73w9nCA4cMizOF0/Q0HMlJj5At1=/UcWJzmWA4BNevH0tbtMJqs1H9Zar
