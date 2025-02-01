@@ -10,7 +10,7 @@ nossaclinica-api:
         secretKey: S4zXL3gloxcaKyTfdG?-fwJ?eFyL/JRHbFIgajP8ol4vweRSRwGwRvvKZTAGqPxlcZ0htrX73w9nCA4cMizOF0/Q0HMlJj5At1=/UcWJzmWA4BNevH0tbtMJqs1H9Zar
         jwtExpirationMs: 14400000
     cors:
-      origins: 'https://prod-nossaclinica.netlify.app'
+      origins: 'https://prod-nossaclinica.netlify.app/'
   images:
     path-root: 'https://raw.githubusercontent.com/nossaclinica/nossaclinica_imagens/main'
     users:
@@ -32,7 +32,7 @@ spring:
   application:
     name: nossa-clinica-api
   datasource:
-    url: jdbc:postgres://ec2-13-216-14-233.compute-1.amazonaws.com:5432/daia0o9oghqub4
+    url: 'jdbc:postgres://ec2-13-216-14-233.compute-1.amazonaws.com:5432/daia0o9oghqub4'
     username: usdq3pi50msmt
     password: pdc44e3642c6a109033c7b93a8644352f8cbcc051b04ce9e70807c0b5d1a3dd06
   flyway:

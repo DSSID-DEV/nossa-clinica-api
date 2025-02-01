@@ -26,12 +26,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.PermitAll;
+
 @Slf4j
-//@PermitAll
+@PermitAll
 @RestController
 @RequiredArgsConstructor
 @Tag(name = "nossa-clinica-api")
-//@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping(value = "/auth", produces = MediaType.APPLICATION_JSON_VALUE)
 public class AutenticacaoController {
 

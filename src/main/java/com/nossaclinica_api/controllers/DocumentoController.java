@@ -19,7 +19,7 @@ import java.util.Optional;
 @Tag(name = "nossa-clinica-api")
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/documentos")
-public class        DocumentoController {
+public class DocumentoController {
 
     private final DocumentoService service;
 

@@ -75,7 +75,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public CorsConfigurationSource corsConfigureSource() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowedOrigins(List.of("https://prod-nossaclinica.netlify.app")); // Permitir React
+        corsConfiguration.setAllowedOrigins(List.of(origins)); // Permitir React
         corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS")); // Métodos permitidos
         corsConfiguration.setAllowedHeaders(List.of("*")); // Permitir todos os headers
         corsConfiguration.setAllowCredentials(true); // Permitir envio de cookies/autenticação

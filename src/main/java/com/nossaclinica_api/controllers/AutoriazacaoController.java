@@ -1,30 +1,19 @@
 package com.nossaclinica_api.controllers;
 
-import com.nossaclinica_api.config.security.JwtProvider;
-import com.nossaclinica_api.models.dtos.FormaDePagamentoDTO;
-import com.nossaclinica_api.models.dtos.requests.movimentacoes.RequestMovimentacao;
 import com.nossaclinica_api.models.dtos.requests.solicitacoes.RequestSolicitacaoEstornoDePagamento;
 import com.nossaclinica_api.services.AutorizacaoService;
-import com.nossaclinica_api.services.SmsService;
-import com.nossaclinica_api.services.UserServices;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Slf4j
-//@PermitAll
 @RestController
 @RequiredArgsConstructor
 @Tag(name = "nossa-clinica-api")
