@@ -18,8 +18,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.awt.*;
-import java.io.File;
-import java.io.FileOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Optional;
@@ -35,21 +34,13 @@ public class TemplateEcocardiogramaDefaultPdfA4 {
     @Value("${nossaclinica-api.images.logomarca}")
     private String pathLogomarca;
 
-    @Value("${nossaclinica-api.config.documentos}")
-    private String diretorio;
 
-    public File gerarPdf_A4(DadosParaProntuario inserir, String tipoDocumento, Optional<Object> laudoMedico) throws IOException {
+    public ByteArrayOutputStream gerarPdf_A4(DadosParaProntuario inserir, String tipoDocumento, Optional<Object> laudoMedico) throws IOException {
         float espacamentoDoRodape = 570f;
-        var path = new File(diretorio);
-        if (!path.exists()) {
-            path.mkdir();
-        }
-
-        var filePDF = new File(path + "/".concat(tipoDocumento).concat(Documento.EXTENSAO));
-
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
         Document prontuario = new Document(PageSize.A4, 36f, 36f, 5f, 0f);
          try {
-            PdfWriter.getInstance(prontuario, new FileOutputStream(filePDF));
+            PdfWriter.getInstance(prontuario, baos);
             prontuario.open();
             //MONTAR CABEÇALHO DO DOCUMENTO
             try {
@@ -78,14 +69,14 @@ public class TemplateEcocardiogramaDefaultPdfA4 {
             rodape.setSpacingBefore(espacamentoDoRodape);
             prontuario.add(rodape);
 
-        } catch (IOException | DocumentException e) {
+        } catch (DocumentException e) {
             log.error(Documento.ERROR, e.getMessage());
             new RuntimeException(Documento.ERROR + e.getCause());
         } finally {
             prontuario.close();
 //            write.close();
         }
-        return filePDF;
+        return baos;
     }
 
     private PdfPTable montarAssinatura(DadosParaProntuario inserir) {

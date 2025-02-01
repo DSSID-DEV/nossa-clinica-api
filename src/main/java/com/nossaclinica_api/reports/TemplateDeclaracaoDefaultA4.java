@@ -21,19 +21,12 @@ public class TemplateDeclaracaoDefaultA4 {
     @Value("${nossaclinica-api.images.logomarca}")
     private String pathLogomarca;
 
-    @Value("${nossaclinica-api.config.documentos}")
-    private String diretorio;
 
     public File gerarPdf_A4(DadosParaProntuario dadosParaProntuario, String tipoDocumento, Optional<Object> declaracao) {
         float espacamentoDoRodape = 570f;
-        var path = new File(diretorio);
-        if (!path.exists()) {
-            path.mkdir();
-        }
-
-        var filePDF = new File(path + "/".concat(tipoDocumento).concat(Documento.EXTENSAO));
 
 
-        return filePDF;
+
+        return null;
     }
 }

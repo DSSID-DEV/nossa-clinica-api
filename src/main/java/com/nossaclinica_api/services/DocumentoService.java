@@ -67,8 +67,8 @@ public class DocumentoService {
     public byte[] gerarEcocardiogramaPdfA4(Long idAgendamento, Optional<Object> laudo) {
         var dadosParaProntuario = agendamentos.gerarDocumentoClinico(idAgendamento);
         try {
-            var filePDF = ecocardiogramaDefaultA4.gerarPdf_A4(dadosParaProntuario, Documento.TIPO_PARECER_CARDIOLOGICO, laudo);
-            return Files.readAllBytes(filePDF.toPath());
+            var baos = ecocardiogramaDefaultA4.gerarPdf_A4(dadosParaProntuario, Documento.TIPO_PARECER_CARDIOLOGICO, laudo);
+            return baos.toByteArray();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

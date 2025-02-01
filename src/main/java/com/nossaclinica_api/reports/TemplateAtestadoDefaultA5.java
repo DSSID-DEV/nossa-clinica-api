@@ -34,8 +34,6 @@ public class TemplateAtestadoDefaultA5 {
     @Value("${nossaclinica-api.images.logomarca}")
     private String pathLogomarca;
 
-    @Value("${nossaclinica-api.config.documentos}")
-    private String diretorio;
 
     public ByteArrayOutputStream gerarPdf_A5(DadosParaProntuario inserir, String tipoDocumento, Optional<Object> observacao)throws IOException {
 
